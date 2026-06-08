@@ -301,7 +301,7 @@ async function handleNewThread(
 
   const safeName = sanitizeThreadName(guards, thread.name);
   const branchName = sanitizeBranchName(guards, safeName);
-  const workerName = argValue(args, "--worker-name") || `atlas-${branchName}`;
+  const workerName = argValue(args, "--worker-name") || `alloy-${branchName}`;
   const confirmation = await postMessage(token, thread.id, "spawn codex? reply go");
   state.pending[thread.id] = { confirmationId: confirmation?.id, requestedAt: new Date().toISOString(), workerName, branchName };
   writeJson(statePath(args), state);
